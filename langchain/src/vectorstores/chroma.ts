@@ -117,8 +117,8 @@ export class Chroma extends VectorStore {
     // similaritySearchVectorWithScore supports one query vector at a time
     // chroma supports multiple query vectors at a time
     const result = await collection.query({
-      query_embeddings: query,
-      n_results: k,
+      queryEmbeddings: query,
+      nResults: k,
       where: { ..._filter },
     });
 
@@ -128,7 +128,7 @@ export class Chroma extends VectorStore {
     }
     // get the result data from the first and only query vector
     const [firstIds] = ids;
-    const [firstDistances] = distances;
+    const [firstDistances] = distances[0];
     const [firstDocuments] = documents;
     const [firstMetadatas] = metadatas;
 
